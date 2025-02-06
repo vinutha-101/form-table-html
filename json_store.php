@@ -1,7 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $file = 'products.json';
-    
     $data = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
     
     $newEntry = [
@@ -12,12 +11,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "hobbies" => $_POST["hobbies"],
         "gender" => $_POST["gender"]
     ];
- 
-    $data[] = $newEntry;
+
+    if (isset($_POST["index"]) && $_POST["index"] !== "") {
+        $index = (int)$_POST["index"];
+        $data[$index] = $newEntry;  // Update existing entry
+    } else {
+        $data[] = $newEntry;  // Add new entry
+    }
 
     file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT));
-
-    header("Location: index.html");
+    header("Location: index.html"); // Redirect back to the table
     exit();
 }
 ?>
