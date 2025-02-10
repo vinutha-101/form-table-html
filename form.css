@@ -42,7 +42,6 @@ body {
     margin-bottom: 0;
 }
 
-/* Styling for Save & Cancel buttons */
 .form-group .btn-action {
     width: 48%; 
     margin-top: 10px;
@@ -56,12 +55,10 @@ body {
     transition: background 0.3s ease-in-out;
 }
 
-/* Hover Effect */
 .form-group .btn-action:hover {
     background: linear-gradient(135deg, #5a9bd6, #8c47a1);
 }
 
-/* Responsive Styling */
 @media (max-width: 576px) {
     .container {
         padding: 5% 7%;
